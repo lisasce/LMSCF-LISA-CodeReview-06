@@ -16,7 +16,8 @@ class Sight {
 
     display(){
         let card = ` 
-            <div class="card mb-3" value="${this.city}">
+            <div class="card mb-3" value="${this.city}"> 
+            <!--col-xl-2 col-lg-3 col-md-4 col-sm-10 gefaellt mir nicht-->
                 <img class="card-img-top d-sm-none d-md-flex " alt="img" src="../img/${this.img}">
                 <div class="card-body ">
                     <h5 class="card-title">${this.name}</h5>
@@ -85,16 +86,7 @@ class Event extends Sight{
 let objectForCards: Array<Sight>;
 objectForCards = [];
 
-let objSights: Array<Sight>;
-objSights = [];
-
-let objResto: Array<Restaurant>;
-objResto = [];
-
-let objEvents: Array<Event>;
-objEvents = [];
-
-function objectCreation(arrayName, indexStart, indexEnd, className, divName){
+function objectCreation(indexStart, indexEnd, className, divName){
     for (let i = indexStart; i<indexEnd; i++){
        if (className == Sight){
            var objectInfo = new Sight( city[i], locationName[i], ad[i], img[i], date[i]);
@@ -105,15 +97,14 @@ function objectCreation(arrayName, indexStart, indexEnd, className, divName){
        else if (className == Event) {
            var objectInfo = new Event( city[i], locationName[i], ad[i], img[i], date[i],  eventDateTime[i], price[i]);
        }
-       arrayName.push(objectInfo);
        objectForCards.push(objectInfo);
        document.getElementById(divName).innerHTML+=objectInfo.display()
     }
 }
 
-objectCreation(objSights, 0, 6, Sight, "sightCardsDiv");
-objectCreation(objResto, 6, 12, Restaurant, "restoCardsDiv");
-objectCreation(objEvents, 12, 18, Event, "eventCardsDiv");
+objectCreation(0, 6, Sight, "sightCardsDiv");
+objectCreation(6, 12, Restaurant, "restoCardsDiv");
+objectCreation(12, 18, Event, "eventCardsDiv");
 console.table(objectForCards);
 
 

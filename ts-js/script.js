@@ -20,7 +20,7 @@ var Sight = /** @class */ (function () {
         this.visit = visit;
     }
     Sight.prototype.display = function () {
-        var card = " \n            <div class=\"card mb-3\" value=\"" + this.city + "\">\n                <img class=\"card-img-top d-sm-none d-md-flex \" alt=\"img\" src=\"../img/" + this.img + "\">\n                <div class=\"card-body \">\n                    <h5 class=\"card-title\">" + this.name + "</h5>\n                    <p class=\"card-text\">" + this.address + "</p>\n                    <span class=\"p-2\" value=\"" + Number(this.visit) + "\">Visited on: " + this.visit.toLocaleDateString('en-GB') + "</span>\n                </div>\n            </div>\n        ";
+        var card = " \n            <div class=\"card mb-3\" value=\"" + this.city + "\"> \n            <!--col-xl-2 col-lg-3 col-md-4 col-sm-10 gefaellt mir nicht-->\n                <img class=\"card-img-top d-sm-none d-md-flex \" alt=\"img\" src=\"../img/" + this.img + "\">\n                <div class=\"card-body \">\n                    <h5 class=\"card-title\">" + this.name + "</h5>\n                    <p class=\"card-text\">" + this.address + "</p>\n                    <span class=\"p-2\" value=\"" + Number(this.visit) + "\">Visited on: " + this.visit.toLocaleDateString('en-GB') + "</span>\n                </div>\n            </div>\n        ";
         return card;
     };
     return Sight;
@@ -56,13 +56,7 @@ var Event = /** @class */ (function (_super) {
 }(Sight));
 var objectForCards;
 objectForCards = [];
-var objSights;
-objSights = [];
-var objResto;
-objResto = [];
-var objEvents;
-objEvents = [];
-function objectCreation(arrayName, indexStart, indexEnd, className, divName) {
+function objectCreation(indexStart, indexEnd, className, divName) {
     for (var i = indexStart; i < indexEnd; i++) {
         if (className == Sight) {
             var objectInfo = new Sight(city[i], locationName[i], ad[i], img[i], date[i]);
@@ -73,14 +67,13 @@ function objectCreation(arrayName, indexStart, indexEnd, className, divName) {
         else if (className == Event) {
             var objectInfo = new Event(city[i], locationName[i], ad[i], img[i], date[i], eventDateTime[i], price[i]);
         }
-        arrayName.push(objectInfo);
         objectForCards.push(objectInfo);
         document.getElementById(divName).innerHTML += objectInfo.display();
     }
 }
-objectCreation(objSights, 0, 6, Sight, "sightCardsDiv");
-objectCreation(objResto, 6, 12, Restaurant, "restoCardsDiv");
-objectCreation(objEvents, 12, 18, Event, "eventCardsDiv");
+objectCreation(0, 6, Sight, "sightCardsDiv");
+objectCreation(6, 12, Restaurant, "restoCardsDiv");
+objectCreation(12, 18, Event, "eventCardsDiv");
 console.table(objectForCards);
 function navSelections() {
     var currentText = this.parentElement.previousElementSibling;
