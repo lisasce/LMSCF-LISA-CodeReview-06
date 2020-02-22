@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Lisa">
+    <meta name="description" content="Travelling to Everest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="challenge.html">
+    <!--own stylesheet-->
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
+    <!--If you’re using our compiled JavaScript, don’t forget to include CDN versions of jQuery and Popper.js before js.-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- Bootstrap --><!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--tinySort library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.5/tinysort.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.5/jquery.tinysort.js"></script>
+
+    <title>desc Travel O'mate</title>
+</head>
+<body>
+
+
+<!-- Nav tabs -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Travel O'mate</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCity" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    City
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" id="navVienna"href="#" value="Vienna">Vienna</a>
+                    <a class="dropdown-item" id="navLondon" href="#"  value="London">London</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#" id="navSightseeing"  value="sightseeing">Sightseeing</a>
+                    <a class="dropdown-item" href="#" id="navRestaurant"  value="restaurant">Restaurant</a>
+                    <a class="dropdown-item" href="#" id="navEvent"  value="events">Events</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index-asc.html" role="button">Ascending sorted list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index-desc.html" role="button">Descending sorted list</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+
+<div class="jumbotron jumbotron-fluid bg-light">
+
+
+    <div class="container text-black ">
+
+        <h1 class="display-4 pt-4 text-center font-weight-bold">Welcome to Travel O'mate!</h1>
+        <hr class="my-4">
+        <p class=" font-weight-bold">We are giving people a taste of Europe they won’t soon forget by exposing them to real food, people and neighbourhoods. Our mission is to leave travelers with an unparalleled, non-touristy (beside sight seeing ^^ ),experience in undiscovered neighborhoods of the most fascinating cities in the world.</p>
+        <hr class="my-4">
+        <a class="btn btn-light justify-content-center" href="https://www.eatingeurope.com/blog/" target="_blank" role="button">Here to the destinations Blogs</a>
+
+    </div>
+
+</div>
+
+<div id="content" class="container-fluid p-3">
+    <div id="sightCardsDiv" class="row justify-content-around m-auto text-center ">
+        <h2 class="col-12 m-3">Sightseeing</h2>
+    </div>
+
+
+    <div id="restoCardsDiv" class="row justify-content-around m-auto text-center">
+        <h2 class="col-12 m-3">Restaurant</h2>
+    </div>
+
+    <div id="eventCardsDiv" class="row justify-content-around m-auto text-center ">
+        <h2 class="col-12 m-3">Events</h2>
+    </div>
+
+</div>
+
+<footer class="nav justify-content-center mb-1">Travel O'mate&copy;lisa2020</footer>
+<script src="../ts-js/database.js"></script>
+<script src="../ts-js/script.js"></script>
+
+<script>
+
+
+
+    tinysort('#sightCardsDiv>div',{selector:'span', attr:'value',order:'desc'});
+    tinysort('#restoCardsDiv>div',{selector:'span', attr:'value',order:'desc'});
+    tinysort('#eventCardsDiv>div',{selector:'span', attr:'value',order:'desc'});
+
+</script>
+
+
+
+</body>
+</html>
